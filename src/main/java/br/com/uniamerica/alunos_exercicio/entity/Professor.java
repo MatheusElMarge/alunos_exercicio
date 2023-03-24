@@ -21,8 +21,22 @@ public class Professor {
     @Getter @Setter
     @Column(name = "nome", nullable = false)
     private String nome;
-    @ManyToMany
-    @JoinColumn(name = "aluno_professor", nullable = false)
+
+    @Getter
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "aluno_professor",
+            uniqueConstraints = @UniqueConstraint(columnNames = {
+                "professor_id",
+                "aluno_id"
+            }
+    ),
+            joinColumns = @JoinColumn(
+                    name = "professor_id"),
+            inverseJoinColumns = @JoinColumn(
+                    name = "aluno_id"
+            )
+    )
+
      private List<Aluno> alunos;
 
 

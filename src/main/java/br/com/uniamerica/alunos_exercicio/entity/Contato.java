@@ -26,7 +26,7 @@ public class Contato {
 
     @Getter @Setter
     @ManyToOne
-    @JoinColumn(name = "aluno", nullable = false)
+    @JoinColumn(name = "aluno_id")
     private Aluno aluno;
     //lista
 

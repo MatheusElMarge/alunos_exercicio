@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @Entity
 @Table(name = "aluno", schema = "public")
 
@@ -27,5 +29,11 @@ public class Aluno {
     @OneToOne
     @JoinColumn (name = "endereco", nullable = false)
     private Endereco endereco;
+
+
+    @Getter
+    @OneToMany
+    @JoinColumn(name = "contato", nullable = false, unique = true)
+    private List<Contato> contato;
 
 }
